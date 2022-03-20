@@ -16,7 +16,11 @@ function sleep (ms) {
 
 app.use(express.json())
 mongoose.connect(uri, { useNewUrlParser: true }, (err, db) => {
-  console.log('connected')
+  if (err) {
+    return console.error(err)
+  } else {
+    console.log('connected')
+  }
 })
 
 app.get('/getMovies', (req, res) => {
@@ -28,11 +32,6 @@ app.get('/getMovies', (req, res) => {
     }
   })
 })
-
-
-
-
-
 
 app.get('/syncMovies', async (req, res) => {
   const options = {
