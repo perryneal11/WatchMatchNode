@@ -75,7 +75,7 @@ async function getEverything (service, type) {
       console.log('starting movies length', moviesToAdd.length)
       console.log('pages', numOfPages)
       postToDatabase(moviesToAdd)
-      for (let x = 2; x < 2; x++) {
+      for (let x = 2; x < numOfPages; x++) {
         await sleep(1000).then(() => {
           console.log('changing pages to ', x)
           options.params.page = x
