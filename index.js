@@ -1,10 +1,8 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const uri =
-  'mongodb+srv://perryneal11:mongodb@cluster0.hkdld.mongodb.net/WatchMatch?retryWrites=true&w=majority'
+const uri = 'mongodb+srv://perryneal11:mongodb@cluster0.hkdld.mongodb.net/WatchMatch?retryWrites=true&w=majority'
 const MoviesModel = require('./models/Movies')
-
 const cors = require('cors')
 const { response } = require('express')
 app.use(cors())
@@ -25,7 +23,7 @@ app.get('/getMovies', (req, res) => {
     } else {
       res.json(result)
     }
-  })
+  }).limit(100)
 })
 
 app.listen(process.env.PORT || 5000, () => {
